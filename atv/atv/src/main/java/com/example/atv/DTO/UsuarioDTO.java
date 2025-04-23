@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class UsuarioDTO implements Serializable{
 
     private Long id;

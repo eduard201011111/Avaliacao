@@ -40,19 +40,18 @@ public class UsuarioService {
     public Optional<UsuarioDTO> updateUsuario(Long id, UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioOptional = UsuarioRepository.findById(id);
         if (usuarioOptional.isPresent()) {
-            Usuario Usuario = usuarioOptional.get();
-            Usuario.setId(usuarioDTO.getId());
-            Usuario.setNome(usuarioDTO.getNome());
-            Usuario.setSobrenome(usuarioDTO.getSobrenome());
-            Usuario.setCpf(usuarioDTO.getCpf());
-            Usuario.setEmail(usuarioDTO.getEmail());
-            Usuario.setUsername(usuarioDTO.getUsername());
-            Usuario.setSenha(usuarioDTO.getSenha());
-            Usuario.setDataNascimento(usuarioDTO.getDataNascimento());
+            Usuario usuario = usuarioOptional.get();
+            usuario.setNome(usuarioDTO.getNome());
+            usuario.setSobrenome(usuarioDTO.getSobrenome());
+            usuario.setCpf(usuarioDTO.getCpf());
+            usuario.setEmail(usuarioDTO.getEmail());
+            usuario.setUsername(usuarioDTO.getUsername());
+            usuario.setSenha(usuarioDTO.getSenha());
+            usuario.setDataNascimento(usuarioDTO.getDataNascimento());
 
-            Usuario usuarioUpdate = UsuarioRepository.save(Usuario);
+            Usuario usuarioUpdate = UsuarioRepository.save(usuario);
 
-            return Optional.of(usuarioDTO.fromUsuario(Usuario));
+            return Optional.of(usuarioDTO.fromUsuario(usuarioUpdate));
         } else {
             return Optional.empty();
         }
